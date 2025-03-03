@@ -1,12 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Menu } from "antd";
-import { useState } from "react";
+import { useEffect } from "react";
+import { logout } from "../api/api";
 
-const Navbar = () => {
+const Navbar = ({ isAuthenticated, setIsAuthenticated }: { isAuthenticated: boolean; setIsAuthenticated: (auth: boolean) => void }) => {
     const navigate = useNavigate();
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
+
+    useEffect(() => {
+        setIsAuthenticated(!!localStorage.getItem("token"));
+    }, []);
 
     const handleLogout = () => {
+        logout();
         setIsAuthenticated(false);
         navigate("/");
     }
@@ -25,16 +30,11 @@ const Navbar = () => {
                         Log out
                     </Menu.Item>
                 </>
-
-            )
-                :
-
-
-
+            ) : (
                 <Menu.Item key="login">
                     <Link to="/login">Log in</Link>
                 </Menu.Item>
-            }
+            )}
         </Menu>
     );
 };

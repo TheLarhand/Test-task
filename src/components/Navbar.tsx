@@ -10,11 +10,20 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }: { isAuthenticated: bool
         setIsAuthenticated(!!localStorage.getItem("token"));
     }, []);
 
-    const handleLogout = () => {
-        logout();
-        setIsAuthenticated(false);
-        navigate("/");
-    }
+    const handleLogout = async () => {
+        try {
+            const response = await logout(); 
+            if (response?.success) {
+                setIsAuthenticated(false);
+                navigate("/");
+            } else {
+                console.error("Logout failed: ", response?.data?.message);
+            }
+        } catch (error) {
+            console.error("Logout error: ", error);
+        }
+    };
+    
 
     return (
         <Menu mode="horizontal">

@@ -1,6 +1,7 @@
 import { Avatar, Button, Modal } from "antd";
 import { getAuthor, getQuote, getUserName } from "../api/api";
 import { useEffect, useState } from "react";
+import "../styles/global.scss";
 
 const Profile = () => {
   const [userName, setUserName] = useState("Username");
@@ -63,18 +64,25 @@ const Profile = () => {
   }, []);
 
   return (
-    <div>
-      <Avatar src={"/assets/avatar.webp"} size={150} />
-      <div>
-        <h2>Welcome, {userName}!</h2>
-        <Button onClick={handleUpdate}>Update</Button>
+    <div className="profile">
+      <div className="profile__info">
+        <Avatar className="profile__avatar" src="/assets/avatar.webp" size={150} />
+        <div>
+          <h2 className="profile__info__text">Welcome, {userName}!</h2>
+          <Button className="profile__button" onClick={handleUpdate}>Update</Button>
+        </div>
       </div>
-      <p>{authorName}: {quote}</p>
+      <p className="profile__quote">{authorName}: {quote}</p>
 
-      <Modal title="Requesting the quote" open={isModalOpen} onCancel={handleCancel} footer={null}>
-        <p>{step1Status}</p>
-        <p>{step2Status}</p>
-        <Button onClick={handleCancel}>Cancel</Button>
+      <Modal
+        title="Requesting the quote"
+        open={isModalOpen}
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <p className="profile__modal__step">{step1Status}</p>
+        <p className="profile__modal__step">{step2Status}</p>
+        <Button className="profile__modal__button" onClick={handleCancel}>Cancel</Button>
       </Modal>
     </div>
   );

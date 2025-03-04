@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getInfo } from '../api/api';
+import "../styles/global.scss";
 
 const Home = () => {
   const [info, setInfo] = useState<string | null>(null);
@@ -20,7 +21,7 @@ const Home = () => {
   return (
     <div>
       {info && (
-        <h2 dangerouslySetInnerHTML={{ __html: info }} />
+        <h2 className="home__title" dangerouslySetInnerHTML={{ __html: info }} />
       )}
     </div>
   );

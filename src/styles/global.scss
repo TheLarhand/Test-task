@@ -1,0 +1,55 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.home {
+    &__title {
+        font-size: 3rem;
+        text-align: center;
+    }
+}
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    &__info {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+
+        &__text {
+            font-size: 3rem;
+        }
+    }
+
+    &__quote {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    &__avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    &__button {
+        margin-top: 1rem;
+    }
+
+    &__modal {
+        &__step {
+            font-size: 1rem;
+        }
+
+        &__button {
+            margin-top: 1rem;
+        }
+    }
+}

@@ -3,8 +3,6 @@ import api from "../../axiosConfig";
 export const login = async (email: string, password: string) => {
   try {
     const response = await api.post("/login", { email, password });
-    console.log(response.data);
-    
     return response.data;
   } catch (error) {
     throw new Error("Login failed");
@@ -30,4 +28,13 @@ export const logout = async () => {
       throw new Error("Logout failed");
   }
 };
+
+export const getInfo = async () => {
+  try {
+    const response = await api.get("/info");
+    return response.data;
+  } catch (error) {
+    throw new Error("GetInfo failed");
+  }
+}
 
